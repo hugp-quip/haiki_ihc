@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdjwu50lww46h"]
+[gd_scene load_steps=13 format=3 uid="uid://cdjwu50lww46h"]
 
 [ext_resource type="PackedScene" uid="uid://cu0einqsjkurj" path="res://scenes/wall.tscn" id="1_2dftf"]
-[ext_resource type="PackedScene" uid="uid://giirikuu03fx" path="res://scenes/charactertest.tscn" id="2_bcbcq"]
+[ext_resource type="PackedScene" uid="uid://giirikuu03fx" path="res://scenes/character.tscn" id="2_bcbcq"]
 [ext_resource type="ArrayMesh" uid="uid://bx3nn1aka00ct" path="res://house - Copy.obj" id="3_bcbcq"]
 [ext_resource type="ArrayMesh" uid="uid://bxcslwxalynyb" path="res://TesthumanStatue.obj" id="4_js7pq"]
+[ext_resource type="PackedScene" uid="uid://bf475uppsxtiq" path="res://switch.tscn" id="5_eu7l1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2dftf"]
 
@@ -87,18 +88,22 @@ shape = SubResource("ConcavePolygonShape3D_bcbcq")
 [node name="flood" type="SpotLight3D" parent="House"]
 transform = Transform3D(2.85714, 0, 0, 0, -0.0131148, 2.85711, 0, -2.85711, -0.0131148, 3.40768, 7.09768, 3.73036)
 light_color = Color(0.92549, 0.772549, 0, 1)
-light_energy = 2.997
 shadow_enabled = true
 spot_range = 4.518
 spot_angle = 71.34
 spot_angle_attenuation = 3.36358
 
 [node name="OmniLight3D" type="OmniLight3D" parent="House/flood"]
-transform = Transform3D(0.974409, -0.224779, -0.00103178, 0.224779, 0.97441, -0.000117466, 0.00103178, -0.000117463, 0.999999, 0, 0.00190258, -0.414461)
+transform = Transform3D(0.974409, -0.224779, -0.00103178, 0.224779, 0.97441, -0.000117466, 0.00103178, -0.000117463, 0.999999, 0, 0.00274444, -0.597886)
 light_color = Color(0.92549, 0.772549, 0, 1)
-omni_range = 0.519036
+light_energy = 0.311
+omni_range = 1.15354
 omni_attenuation = -0.785
 
 [node name="Testhuman" type="MeshInstance3D" parent="House"]
 transform = Transform3D(2.85714, 0, 0, 0, 2.83691, 0.339386, 0, -0.339386, 2.83691, -10.1837, -0.266661, -8.53044)
 mesh = ExtResource("4_js7pq")
+
+[node name="switch" parent="House" node_paths=PackedStringArray("target") instance=ExtResource("5_eu7l1")]
+transform = Transform3D(-0.437825, 1.96749e-09, -5.43983e-08, 0, 0.536964, 0.0260798, 3.82759e-08, 0.0225055, -0.622244, 3.98489, 2.1727, -1.25084)
+target = [NodePath("../flood"), NodePath("../flood/OmniLight3D")]

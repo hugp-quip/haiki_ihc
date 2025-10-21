@@ -17,6 +17,20 @@ func _ready():
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: look_dir = event.relative*0.01
+	if event is InputEventMouseButton:
+		if event.pressed:
+			var ray : RayCast3D = %CamRaycast
+			ray.collide_with_bodies = false
+			print(ray.is_colliding())
+			if ray.is_colliding():
+				var maybe_switch_child = ray.get_collider()
+				print(maybe_switch_child)
+				if maybe_switch_child != null:
+					var maybe_switch = maybe_switch_child.get_parent()
+					if maybe_switch is Switch:
+						maybe_switch.switch()
+
+
 
 func rotate_camera(delta : float, sens_mod: float = 1.0):
 	var camera = $fpcamera
@@ -54,9 +68,12 @@ func handle_inputs(delta : float):
 
 
 
+
 func _physics_process(delta):
 	
 	handle_inputs(delta)
+
+	
 
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	

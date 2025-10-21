@@ -2,14 +2,13 @@
 
 [ext_resource type="Script" uid="uid://btvtst787wyt8" path="res://scripts/character.gd" id="1_glpr6"]
 [ext_resource type="ArrayMesh" uid="uid://chrpjs76fogvu" path="res://Testhuman.obj" id="2_o00yg"]
+[ext_resource type="PackedScene" uid="uid://3la5nah6qehe" path="res://hud.tscn" id="3_gyoi1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_50n3s"]
 radius = 0.208742
 height = 0.899574
 
 [sub_resource type="BoxMesh" id="BoxMesh_glpr6"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_glpr6"]
 
 [node name="Character" type="CharacterBody3D"]
 transform = Transform3D(1.01456, 0, 0, 0, 1.01456, 0, 0, 0, 1.01456, 0, 0, 0)
@@ -29,15 +28,6 @@ transform = Transform3D(0.890815, 0, 0, 0, 0.342996, 0, 0, 0, 0.511359, -0.00633
 visible = false
 mesh = SubResource("BoxMesh_glpr6")
 
-[node name="old" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.479, 0, 0, 0, 0.456, 0, 0, 0, 0.456, 0, 0, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_glpr6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="old"]
-transform = Transform3D(0.890815, 0, 0, 0, 0.342996, 0, 0, 0, 0.511359, -0.00633523, 0.421845, -0.341943)
-mesh = SubResource("BoxMesh_glpr6")
-
 [node name="Camera_Controller" type="Node3D" parent="."]
 transform = Transform3D(1.01456, 0, 0, 0, 1.01456, 0, 0, 0, 1.01456, 0, 0, 0)
 top_level = true
@@ -48,5 +38,13 @@ transform = Transform3D(1, 0, 0, 0, 0.937337, 0.348425, 0, -0.348425, 0.937337, 
 [node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Target"]
 current = true
 
+[node name="CanvasLayer" parent="." instance=ExtResource("3_gyoi1")]
+
 [node name="fpcamera" type="Camera3D" parent="."]
 transform = Transform3D(0.985649, 0, 0, 0, 0.985649, 0, 0, 0, 0.985649, 0, 0.302236, -0.187408)
+
+[node name="CamRaycast" type="RayCast3D" parent="fpcamera"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -0.0308525, -0.999524, 0, 0.999524, -0.0308525, 0, 0, 0)
+target_position = Vector3(0, -3, 0)
+collide_with_areas = true
