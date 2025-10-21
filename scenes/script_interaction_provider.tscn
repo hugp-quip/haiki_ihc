@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://hmmyqckk13kv"]
 
-[ext_resource type="Script" uid="uid://drwqwgm08jhi8" path="res://script_interaction_provider.gd" id="1_sb4ko"]
-[ext_resource type="PackedScene" uid="uid://k1btqvypwc6a" path="res://interactable_object.tscn" id="2_ilt48"]
+[ext_resource type="Script" uid="uid://drwqwgm08jhi8" path="res://scripts/script_interaction_provider.gd" id="1_sb4ko"]
+[ext_resource type="PackedScene" uid="uid://k1btqvypwc6a" path="res://scenes/interactable_object.tscn" id="2_ilt48"]
 
 [node name="ScriptInteractionProvider" type="Node3D" node_paths=PackedStringArray("interact")]
 script = ExtResource("1_sb4ko")

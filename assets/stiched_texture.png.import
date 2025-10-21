@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgbqgfeo1v54i"
-path.s3tc="res://.godot/imported/download.jpg-50b81f58c54b10518d62dc3618ffefd0.s3tc.ctex"
+uid="uid://bmj6vhmrkvkhk"
+path.s3tc="res://.godot/imported/stiched_texture.png-33bc3b593d3940ec3ce3cc6e4218be64.s3tc.ctex"
+path.etc2="res://.godot/imported/stiched_texture.png-33bc3b593d3940ec3ce3cc6e4218be64.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
-source_file="res://download.jpg"
-dest_files=["res://.godot/imported/download.jpg-50b81f58c54b10518d62dc3618ffefd0.s3tc.ctex"]
+source_file="res://assets/stiched_texture.png"
+dest_files=["res://.godot/imported/stiched_texture.png-33bc3b593d3940ec3ce3cc6e4218be64.s3tc.ctex", "res://.godot/imported/stiched_texture.png-33bc3b593d3940ec3ce3cc6e4218be64.etc2.ctex"]
 
 [params]
 

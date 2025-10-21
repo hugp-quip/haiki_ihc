@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://bf475uppsxtiq"]
+[gd_scene load_steps=14 format=4 uid="uid://bf475uppsxtiq"]
 
-[ext_resource type="Script" uid="uid://cw8nd6e1r02pu" path="res://light_switch.gd" id="1_it01i"]
-[ext_resource type="Texture2D" uid="uid://dnyha4jo72uai" path="res://light_switch_0.png" id="2_8307x"]
-[ext_resource type="PackedScene" uid="uid://k1btqvypwc6a" path="res://interactable_object.tscn" id="3_ds62l"]
+[ext_resource type="Script" uid="uid://cw8nd6e1r02pu" path="res://scripts/light_switch.gd" id="1_it01i"]
+[ext_resource type="Texture2D" uid="uid://dnyha4jo72uai" path="res://assets/light_switch_0.png" id="2_8307x"]
+[ext_resource type="PackedScene" uid="uid://k1btqvypwc6a" path="res://scenes/interactable_object.tscn" id="3_ds62l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4hxo"]
 resource_name = "material_0"
@@ -45,6 +45,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w8qc5")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ds62l"]
+albedo_texture = ExtResource("2_8307x")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlq62"]
+albedo_texture = ExtResource("2_8307x")
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_j1n45"]
 _surfaces = [{
 "aabb": AABB(-0.5, 0, -0.6, 1, 1.125, 0.35),
@@ -77,6 +83,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j1n45")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1nx7o"]
+albedo_texture = ExtResource("2_8307x")
+
 [sub_resource type="Animation" id="Animation_2vwlb"]
 resource_name = "flip"
 length = 0.166667
@@ -93,10 +102,9 @@ _data = {
 &"flip": SubResource("Animation_2vwlb")
 }
 
-[node name="light_switch" type="MeshInstance3D" node_paths=PackedStringArray("interact", "playerProximityArea")]
+[node name="light_switch" type="MeshInstance3D" node_paths=PackedStringArray("interact")]
 script = ExtResource("1_it01i")
 interact = NodePath("InteractableObject")
-playerProximityArea = NodePath("")
 
 [node name="group" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5625, -0.0625)
@@ -105,11 +113,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5625, -0.0625)
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0)
 mesh = SubResource("ArrayMesh_f1fjx")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_ds62l")
 
 [node name="cuboid2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1875)
+material_override = SubResource("StandardMaterial3D_rlq62")
 mesh = SubResource("ArrayMesh_03ks8")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_1nx7o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -117,8 +128,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_y4oxa")
 }
 
-[node name="InteractableObject" parent="." node_paths=PackedStringArray("playerProximityArea") instance=ExtResource("3_ds62l")]
+[node name="InteractableObject" parent="." instance=ExtResource("3_ds62l")]
 unique_name_in_owner = true
-playerProximityArea = NodePath("")
 
 [connection signal="interacted" from="InteractableObject" to="." method="_on_interactable_object_interacted"]

@@ -24,10 +24,10 @@ func _input(event: InputEvent) -> void:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			var ray : RayCast3D = %CamRaycast
 			ray.collide_with_bodies = false
-			print(ray.is_colliding())
+			#print(ray.is_colliding())
 			if ray.is_colliding():
 				var maybe_interactable_child = ray.get_collider()
-				print(maybe_interactable_child)
+				#print(maybe_interactable_child)
 				if maybe_interactable_child != null:
 					var maybe_interactable = maybe_interactable_child.get_parent()
 					if maybe_interactable is Interactable:

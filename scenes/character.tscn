@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://giirikuu03fx"]
 
 [ext_resource type="Script" uid="uid://btvtst787wyt8" path="res://scripts/character.gd" id="1_glpr6"]
-[ext_resource type="ArrayMesh" uid="uid://chrpjs76fogvu" path="res://Testhuman.obj" id="2_o00yg"]
-[ext_resource type="PackedScene" uid="uid://3la5nah6qehe" path="res://hud.tscn" id="3_gyoi1"]
+[ext_resource type="ArrayMesh" uid="uid://qrn4ihi0hl85" path="res://assets/Testhuman.obj" id="2_o00yg"]
+[ext_resource type="PackedScene" uid="uid://3la5nah6qehe" path="res://scenes/hud.tscn" id="3_gyoi1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_50n3s"]
 radius = 0.208742
