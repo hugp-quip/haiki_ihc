@@ -1,16 +1,18 @@
 class_name LightSwitch
-extends Switch
+extends InteractionProvider
 @onready var original_energy : float = target[0].light_energy
+
 
 func _ready() -> void:
 	if original_energy > 0:
-		switch_text1 = "Ligar luz"
-		switch_text2 = "Desligar luz"
-
+		doText = "Desligar luz"
+		undoText = "Ligar luz"
 	else:
-		switch_text1 = "Desligar luz"
-		switch_text2 = "Ligar luz"
-		
+		doText = "Ligar luz"
+		undoText = "Desligar luz"
+	#%InteractableObject.tooltiptext.text = doText
+	config_interactable()
+	
 func switch():
 	if target[0].light_energy == original_energy:
 		for targ in target:
@@ -23,17 +25,14 @@ func switch():
 	
 	_switch_tooltiptext()
 
+func _switch_tooltiptext():
+	if %InteractableObject.tooltiptext.text == doText:
+		%InteractableObject.tooltiptext.text = undoText
+	else:
+		%InteractableObject.tooltiptext.text = doText
 
+func _on_interactable_object_interacted(_source : Node3D) -> void:
+	switch()
 
-
-
-
-
-func _on_player_proximity_area_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D:
-		%tooltiptext.show()
-
-
-func _on_player_proximity_area_body_exited(body: Node3D) -> void:
-	if body is CharacterBody3D:
-		%tooltiptext.hide()
+func do_interaction():
+	switch()

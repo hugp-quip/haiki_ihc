@@ -31,6 +31,7 @@ mesh = SubResource("BoxMesh_glpr6")
 [node name="Camera_Controller" type="Node3D" parent="."]
 transform = Transform3D(1.01456, 0, 0, 0, 1.01456, 0, 0, 0, 1.01456, 0, 0, 0)
 top_level = true
+visible = false
 
 [node name="Camera_Target" type="Node3D" parent="Camera_Controller"]
 transform = Transform3D(1, 0, 0, 0, 0.937337, 0.348425, 0, -0.348425, 0.937337, 0, 1.10188, 1.66142)
@@ -42,6 +43,7 @@ current = true
 
 [node name="fpcamera" type="Camera3D" parent="."]
 transform = Transform3D(0.985649, 0, 0, 0, 0.985649, 0, 0, 0, 0.985649, 0, 0.302236, -0.187408)
+current = true
 
 [node name="CamRaycast" type="RayCast3D" parent="fpcamera"]
 unique_name_in_owner = true
