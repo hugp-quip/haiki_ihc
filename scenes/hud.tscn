@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://3la5nah6qehe"]
+[gd_scene load_steps=3 format=3 uid="uid://3la5nah6qehe"]
 
 [ext_resource type="Script" uid="uid://b1db2gng26f2u" path="res://scenes/fps_hud.gd" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://moj1eucygmyp" path="res://scenes/controls.gd" id="2_5ysmq"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -9,10 +10,14 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -11.0
+offset_right = 3.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Control"]
+[node name="pointer" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -23,6 +28,19 @@ offset_bottom = 12.0164
 scale = Vector2(1, 0.84)
 theme_override_font_sizes/font_size = 30
 text = "."
+metadata/_edit_use_anchors_ = true
+
+[node name="ErrorMessage" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0130208
+anchor_top = 0.233025
+anchor_right = 0.980035
+anchor_bottom = 0.746914
+theme_override_font_sizes/font_size = 70
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="fps" type="Label" parent="Control"]
@@ -38,3 +56,81 @@ theme_override_font_sizes/font_size = 40
 text = "fps: <n>"
 script = ExtResource("1_ahhtf")
 metadata/_edit_use_anchors_ = true
+
+[node name="Controls" type="Control" parent="Control"]
+layout_mode = 1
+anchor_left = 0.0225694
+anchor_top = 0.635802
+anchor_right = 0.333333
+anchor_bottom = 1.01389
+script = ExtResource("2_5ysmq")
+metadata/_edit_use_anchors_ = true
+
+[node name="up" type="Button" parent="Control/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.337989
+anchor_top = 0.130612
+anchor_right = 0.625502
+anchor_bottom = 0.535106
+offset_right = 54.9006
+offset_bottom = 38.1938
+scale = Vector2(0.652154, 0.721812)
+theme_override_font_sizes/font_size = 60
+text = "W"
+metadata/_edit_use_anchors_ = true
+
+[node name="left" type="Button" parent="Control/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0298165
+anchor_top = 0.557281
+anchor_right = 0.317329
+anchor_bottom = 0.961775
+offset_right = 54.9006
+offset_bottom = 38.1938
+scale = Vector2(0.652154, 0.721812)
+theme_override_font_sizes/font_size = 60
+text = "A"
+metadata/_edit_use_anchors_ = true
+
+[node name="down" type="Button" parent="Control/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.335851
+anchor_top = 0.557281
+anchor_right = 0.623364
+anchor_bottom = 0.961775
+offset_right = 54.9006
+offset_bottom = 38.1938
+scale = Vector2(0.652154, 0.721812)
+theme_override_font_sizes/font_size = 60
+text = "S"
+metadata/_edit_use_anchors_ = true
+
+[node name="right" type="Button" parent="Control/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.639333
+anchor_top = 0.557281
+anchor_right = 0.926846
+anchor_bottom = 0.961775
+offset_right = 54.9006
+offset_bottom = 38.1938
+scale = Vector2(0.652154, 0.721812)
+theme_override_font_sizes/font_size = 60
+text = "D"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="Control/Controls/up" to="Control/Controls" method="_on_up_button_down"]
+[connection signal="button_up" from="Control/Controls/up" to="Control/Controls" method="_on_up_button_up"]
+[connection signal="pressed" from="Control/Controls/up" to="Control/Controls" method="_on_up_pressed"]
+[connection signal="button_down" from="Control/Controls/left" to="Control/Controls" method="_on_left_button_down"]
+[connection signal="button_up" from="Control/Controls/left" to="Control/Controls" method="_on_left_button_up"]
+[connection signal="pressed" from="Control/Controls/left" to="Control/Controls" method="_on_left_pressed"]
+[connection signal="button_down" from="Control/Controls/down" to="Control/Controls" method="_on_down_button_down"]
+[connection signal="button_up" from="Control/Controls/down" to="Control/Controls" method="_on_down_button_up"]
+[connection signal="pressed" from="Control/Controls/down" to="Control/Controls" method="_on_down_pressed"]
+[connection signal="button_down" from="Control/Controls/right" to="Control/Controls" method="_on_right_button_down"]
+[connection signal="button_up" from="Control/Controls/right" to="Control/Controls" method="_on_right_button_up"]
+[connection signal="pressed" from="Control/Controls/right" to="Control/Controls" method="_on_right_pressed"]

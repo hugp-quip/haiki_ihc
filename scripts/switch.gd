@@ -18,3 +18,4 @@ func config_interactable():
 		interact.playerProximityArea = playerProximityArea
 		interactionArea.reparent(interact)
 		interact.connect_to_areas()
+		interact.set_tooltip(doText)

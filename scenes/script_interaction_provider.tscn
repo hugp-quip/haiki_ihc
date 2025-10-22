@@ -9,3 +9,4 @@ doText = "debugtext"
 interact = NodePath("InteractableObject")
 
 [node name="InteractableObject" parent="." instance=ExtResource("2_ilt48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.969513, 0)

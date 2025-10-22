@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cbxyd1ppqbgsx"
+path="res://.godot/imported/door_IHC.obj-1486b200b2c99f2f88cf14fe9a3e1eac.mesh"
+
+[deps]
+
+files=["res://.godot/imported/door_IHC.obj-1486b200b2c99f2f88cf14fe9a3e1eac.mesh"]
+
+source_file="res://assets/door_IHC.obj"
+dest_files=["res://.godot/imported/door_IHC.obj-1486b200b2c99f2f88cf14fe9a3e1eac.mesh", "res://.godot/imported/door_IHC.obj-1486b200b2c99f2f88cf14fe9a3e1eac.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

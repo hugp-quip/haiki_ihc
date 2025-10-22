@@ -130,5 +130,6 @@ libraries = {
 
 [node name="InteractableObject" parent="." instance=ExtResource("3_ds62l")]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42533, -0.440863)
 
 [connection signal="interacted" from="InteractableObject" to="." method="_on_interactable_object_interacted"]

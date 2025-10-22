@@ -22,10 +22,13 @@ func interact(interactionSource : CharacterBody3D) -> void:
 	interacted.emit(interactionSource)
 
 var _should_tooltip := true
+
 func enable_tooltip() -> void:
 	_should_tooltip =true
+
 func disable_tooltip() -> void:
 	_should_tooltip = false
+
 func _on_player_proximity_area_body_entered(body:Node3D) -> void:
 	if body is CharacterBody3D:
 		player_entered.emit(body)

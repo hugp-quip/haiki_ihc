@@ -14,6 +14,7 @@ var capMouse = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Util.player = self
 	
 
 func _input(event: InputEvent) -> void:
@@ -25,10 +26,12 @@ func _input(event: InputEvent) -> void:
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	if event is InputEventMouseMotion: look_dir = event.relative*0.01
-	if event is InputEventMouseButton:
-		if event.pressed:
+	elif event is InputEventMouseButton:
+		if !event.pressed:
 			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+			
 			var ray : RayCast3D = %CamRaycast
 			ray.collide_with_bodies = false
 			#print(ray.is_colliding())

@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cr33h36e0t1n1" path="res://scripts/interactable_object.gd" id="1_bcilo"]
 
-[node name="InteractableObject" type="Node3D"]
+[node name="interactable_object" type="Node3D"]
 script = ExtResource("1_bcilo")
 
 [node name="tooltiptext" type="Label3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-1, -3.33067e-15, -8.74228e-08, -2.22045e-15, 1, 3.72529e-09, 8.74228e-08, 3.72529e-09, -1, 0.00898803, 1.33558, -0.908939)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 visible = false
-text = "<debug Text>"
+text = "debug text"
 font_size = 42

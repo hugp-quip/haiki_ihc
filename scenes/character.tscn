@@ -28,10 +28,10 @@ transform = Transform3D(0.890815, 0, 0, 0, 0.342996, 0, 0, 0, 0.511359, -0.00633
 visible = false
 mesh = SubResource("BoxMesh_glpr6")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("3_gyoi1")]
+[node name="HUD" parent="." instance=ExtResource("3_gyoi1")]
 
 [node name="fpcamera" type="Camera3D" parent="."]
-transform = Transform3D(0.985649, 0, 0, 0, 0.985649, 0, 0, 0, 0.985649, 0, 0.302236, -0.0436648)
+transform = Transform3D(0.985649, 0, 0, 0, 0.985649, 0, 0, 0, 0.985649, 0, 0.445378, -0.0436648)
 current = true
 
 [node name="CamRaycast" type="RayCast3D" parent="fpcamera"]
