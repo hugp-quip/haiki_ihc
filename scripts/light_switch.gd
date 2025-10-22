@@ -14,13 +14,13 @@ func _ready() -> void:
 	config_interactable()
 	
 func switch():
-	if target[0].light_energy == original_energy:
+	if target[0].visible:
 		for targ in target:
-			targ.light_energy = 0
+			targ.hide()
 		%AnimationPlayer.play("flip")
 	else:
 		for targ in target:
-			targ.light_energy = original_energy
+			targ.show()
 		%AnimationPlayer.play_backwards("flip")
 	
 	_switch_tooltiptext()

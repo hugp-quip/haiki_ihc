@@ -3,12 +3,11 @@
 [ext_resource type="Script" uid="uid://d0en4qifr6mss" path="res://scripts/text_interaction_provider.gd" id="1_jkla1"]
 [ext_resource type="PackedScene" uid="uid://k1btqvypwc6a" path="res://scenes/interactable_object.tscn" id="2_4igb0"]
 
-[node name="TextInteractionProvider" type="Node3D" node_paths=PackedStringArray("interact", "playerProximityArea")]
+[node name="TextInteractionProvider" type="Node3D" node_paths=PackedStringArray("interact")]
 script = ExtResource("1_jkla1")
 interactionText = "no text provided"
 doText = "no text provided"
 interact = NodePath("InteractableObject")
-playerProximityArea = NodePath("")
 
 [node name="InteractableObject" parent="." instance=ExtResource("2_4igb0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.772676, 0)

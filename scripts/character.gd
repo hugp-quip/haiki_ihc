@@ -6,17 +6,24 @@ const JUMP_VELOCITY := 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var fixed_camera : Camera3D
 var look_dir : Vector2
-const FP_SENS := 50
+const FP_SENS := 40
 var capMouse = false
 
-@onready var third_p_camera = get_node("Camera_Controller/Camera_Target/Camera3D")
-@onready var first_p_camera = get_node("fpcamera")
+# @onready var third_p_camera = get_node("Camera_Controller/Camera_Target/Camera3D")
+# @onready var first_p_camera = get_node("fpcamera")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.is_action_released("pause"):
+			if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			else:
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 	if event is InputEventMouseMotion: look_dir = event.relative*0.01
 	if event is InputEventMouseButton:
 		if event.pressed:
@@ -62,14 +69,9 @@ func handle_inputs(delta : float):
 		$MeshInstance3D/MeshInstance3D.hide()
 		$fpcamera.make_current()
 	
-	if Input.is_action_just_pressed("pause"):
-		capMouse = !capMouse
+	#if Input.is_action_just_pressed("pause"):
 
-		if capMouse:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
+		
 
 
 
@@ -83,14 +85,16 @@ func _physics_process(delta):
 	
 	var direction : Vector3 
 
-	var camera_at := get_viewport().get_camera_3d()
+	#var camera_at := get_viewport().get_camera_3d()
 
-	match camera_at: 
-		#third_p_camera: direction = ($Camera_Controller.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() 
+	# match camera_at: 
+	# 	#third_p_camera: direction = ($Camera_Controller.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() 
 		
-		#fixed_camera: direction = (fixed_camera.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() 
+	# 	#fixed_camera: direction = (fixed_camera.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() 
 		
-		first_p_camera: direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() 
+	# 	first_p_camera: 
+			
+	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() 
 			
 	if direction:
 		velocity.x = direction.x * SPEED
@@ -103,20 +107,20 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and get_viewport().get_camera_3d() == $fpcamera:
-		rotate_camera(delta)
+	# if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and get_viewport().get_camera_3d() == $fpcamera:
+	rotate_camera(delta)
 
-	elif input_dir != Vector2(0,0):
-		var move_rot := Vector2(direction.z, direction.x)*-1
-		rotation.y = move_rot.angle() 
+	# elif input_dir != Vector2(0,0):
+	# 	var move_rot := Vector2(direction.z, direction.x)*-1
+	# 	rotation.y = move_rot.angle() 
 
-	# Check for collisions after moving and sliding
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		if collision.get_collider() is RigidBody3D : # Or RigidBody2D
-			var rigid_body = collision.get_collider()
-			# Apply an impulse to the RigidBody in the opposite direction of the collision normal
-			rigid_body.apply_central_impulse(-collision.get_normal() * 0.5)
+	# # Check for collisions after moving and sliding
+	# for i in get_slide_collision_count():
+	# 	var collision = get_slide_collision(i)
+	# 	if collision.get_collider() is RigidBody3D : # Or RigidBody2D
+	# 		var rigid_body = collision.get_collider()
+	# 		# Apply an impulse to the RigidBody in the opposite direction of the collision normal
+	# 		rigid_body.apply_central_impulse(-collision.get_normal() * 0.5)
 
 	
 	

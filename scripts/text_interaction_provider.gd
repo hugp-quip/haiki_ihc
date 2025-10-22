@@ -17,7 +17,7 @@ func _on_interactable_object_interacted(interactionSource : Node3D) -> void:
 		$InteractableObject.disable_tooltip()
 		$InteractionText.show()
 
-func _on_interactable_object_player_exited(player:Node3D) -> void:
+func _on_interactable_object_player_exited(_player:Node3D) -> void:
 	$InteractableObject.enable_tooltip()
 	$InteractionText.hide()
 		

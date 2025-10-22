@@ -1,4 +1,5 @@
-extends ExecutableNode
+extends Executable
 
-func execute():
-	get_tree().quit()
+static func execute(_tree : SceneTree) -> void:
+	_tree.quit()
+	

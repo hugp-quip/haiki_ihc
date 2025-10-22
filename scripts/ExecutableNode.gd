@@ -1,5 +1,5 @@
-class_name ExecutableNode
-extends Node
+class_name Executable
+extends Resource
 
-func execute():
+static func execute(_tree: SceneTree) -> void:
 	pass

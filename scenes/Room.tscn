@@ -70,6 +70,7 @@ transform = Transform3D(32.6934, 0, 0, 0, 1, 0, 0, 0, 15.4681, -0.0408231, -0.49
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.796565, 7.51803, -5.24736)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
 shape = SubResource("BoxShape3D_2dftf")
@@ -80,6 +81,7 @@ skeleton = NodePath("../../RigidBody3D3")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
 transform = Transform3D(1.02933, 0, 0, 0, 1.02933, 0, 0, 0, 1.02933, 0.797918, 3.93636, -4.70977)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
 shape = SubResource("BoxShape3D_2dftf")
@@ -90,6 +92,7 @@ skeleton = NodePath("../../RigidBody3D2")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1.01456, 0, 0, 0, 1.01456, 0, 0, 0, 1.01456, 0, 0.426152, -5.36917)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_2dftf")
@@ -97,17 +100,13 @@ shape = SubResource("BoxShape3D_2dftf")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("BoxMesh_bcbcq")
 
-[node name="Character" parent="." node_paths=PackedStringArray("fixed_camera") instance=ExtResource("2_hgg63")]
+[node name="Character" parent="." instance=ExtResource("2_hgg63")]
 transform = Transform3D(0.700237, 0, 0.734166, 0, 1.01456, 0, -0.734166, 0, 0.700237, 7.68037, 0.46975, -3.71015)
 disable_mode = 2
-fixed_camera = NodePath("../Camera3D")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2dftf")
 camera_attributes = SubResource("CameraAttributesPractical_bcbcq")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.992137, -0.0702058, 0.103616, -2.45264e-08, 0.827865, 0.560928, -0.12516, -0.556517, 0.821355, 0.130548, 2.73187, 2.09642)
 
 [node name="House" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 7.69627, -0.0364137, -3.64974)
@@ -123,16 +122,9 @@ shape = SubResource("ConcavePolygonShape3D_bcbcq")
 transform = Transform3D(1, 0, 0, 0, -0.00459018, 0.999989, 0, -0.999989, -0.00459018, 3.40768, 7.09768, 3.73036)
 light_color = Color(0.92549, 0.772549, 0, 1)
 shadow_enabled = true
-spot_range = 4.518
-spot_angle = 71.34
-spot_angle_attenuation = 3.36358
 
 [node name="OmniLight3D" type="OmniLight3D" parent="House/flood"]
 transform = Transform3D(0.974409, -0.224779, -0.00103178, 0.224779, 0.97441, -0.000117466, 0.00103178, -0.000117463, 0.999999, 0, 0.00274444, -0.597886)
-light_color = Color(0.92549, 0.772549, 0, 1)
-light_energy = 0.311
-omni_range = 1.15354
-omni_attenuation = -0.785
 
 [node name="Testhuman" type="MeshInstance3D" parent="House"]
 transform = Transform3D(2.85714, 0, 0, 0, 2.83691, 0.339386, 0, -0.339386, 2.83691, -10.1837, -0.266661, -8.53044)
@@ -201,9 +193,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.479373, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.428449, -0.214198, -1.54519)
 shape = SubResource("BoxShape3D_yhffv")
 
-[node name="ScriptInteractionProvider" parent="House" node_paths=PackedStringArray("executable_node", "playerProximityArea", "interactionArea") instance=ExtResource("7_vbd26")]
+[node name="ScriptInteractionProvider" parent="House" node_paths=PackedStringArray("playerProximityArea", "interactionArea") instance=ExtResource("7_vbd26")]
 transform = Transform3D(-2.28409, 0, -0.0861889, 0, 2.28571, 0, 0.0861889, 0, -2.28409, 2.1106, -0.624192, -3.19074)
-executable_node = NodePath("ExecutableNode")
+executable = ExtResource("8_axjh2")
 doText = "sair"
 playerProximityArea = NodePath("PlayerProximityArea")
 interactionArea = NodePath("InteractArea")
@@ -221,10 +213,6 @@ transform = Transform3D(-1.05062, 1.11022e-16, -9.68575e-08, -1.77636e-15, 1.050
 [node name="PlayerProximityCollision" type="CollisionShape3D" parent="House/ScriptInteractionProvider/PlayerProximityArea"]
 transform = Transform3D(-1, -1.45286e-07, -1.00117e-08, 1.03251e-14, 0.0672836, -0.997744, 1.52737e-07, -0.997734, -0.0672836, 0.405859, 0.479882, 2.11548)
 shape = SubResource("BoxShape3D_1kin1")
-
-[node name="ExecutableNode" type="Node" parent="House/ScriptInteractionProvider"]
-script = ExtResource("8_axjh2")
-metadata/_custom_type_script = "uid://om7u0ex4rqps"
 
 [node name="switch" parent="House" node_paths=PackedStringArray("target", "playerProximityArea", "interactionArea") instance=ExtResource("5_4v3hs")]
 transform = Transform3D(-0.437825, 1.96749e-09, -5.43983e-08, 0, 0.536964, 0.0260798, 3.82759e-08, 0.0225055, -0.622244, 3.98489, 2.1727, -1.25084)
