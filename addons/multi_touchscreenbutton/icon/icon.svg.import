@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://seb6ogx0pxyx"
-path="res://.godot/imported/Circle.svg-e9ce0c739f6cdc7edb39fe2ea907cb71.ctex"
+uid="uid://cro1t2202tv2m"
+path="res://.godot/imported/icon.svg-dbb75bc959348c38785d4a6bdf1ba45b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/analog_touch_control/images/Circle.svg"
-dest_files=["res://.godot/imported/Circle.svg-e9ce0c739f6cdc7edb39fe2ea907cb71.ctex"]
+source_file="res://addons/multi_touchscreenbutton/icon/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-dbb75bc959348c38785d4a6bdf1ba45b.ctex"]
 
 [params]
 

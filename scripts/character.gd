@@ -26,22 +26,27 @@ func _input(event: InputEvent) -> void:
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	if event is InputEventMouseMotion: look_dir = event.relative*0.01
-	elif event is InputEventMouseButton:
+	if event is InputEventMouseButton and !is_android:
 		if !event.pressed:
 			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			interact_with_object()
+	elif Input.is_action_just_released("click_android"):
+		interact_with_object()
 
-			
-			var ray : RayCast3D = %CamRaycast
-			ray.collide_with_bodies = false
-			#print(ray.is_colliding())
-			if ray.is_colliding():
-				var maybe_interactable_child = ray.get_collider()
-				#print(maybe_interactable_child)
-				if maybe_interactable_child != null:
-					var maybe_interactable = maybe_interactable_child.get_parent()
-					if maybe_interactable is Interactable:
-						maybe_interactable.interact(self)
+func interact_with_object():
+	var ray : RayCast3D = %CamRaycast
+	ray.collide_with_bodies = false
+	#print(ray.is_colliding())
+	if ray.is_colliding():
+		var maybe_interactable_child = ray.get_collider()
+		#print(maybe_interactable_child)
+		if maybe_interactable_child != null:
+			var maybe_interactable = maybe_interactable_child.get_parent()
+			if maybe_interactable is Interactable:
+				maybe_interactable.interact(self)
+	
+
 
 
 
@@ -77,7 +82,7 @@ func handle_inputs(delta : float):
 		
 
 
-
+var is_android := OS.get_name() == "Android"
 func _physics_process(delta):
 	
 	handle_inputs(delta)
@@ -111,8 +116,10 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	# if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and get_viewport().get_camera_3d() == $fpcamera:
-	rotate_camera(delta)
-
+	if is_android:
+		rotate_camera(delta)
+	else:
+		rotate_camera(delta)
 	# elif input_dir != Vector2(0,0):
 	# 	var move_rot := Vector2(direction.z, direction.x)*-1
 	# 	rotation.y = move_rot.angle() 

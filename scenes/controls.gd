@@ -36,3 +36,12 @@ func _on_left_button_up() -> void:
 
 func _on_up_button_up() -> void:
 	Input.action_release("move_up") 
+
+
+
+func _on_click_button_up() -> void:
+	Input.action_press("click_android")
+
+
+func _on_click_button_down() -> void:
+	Input.action_release("click_android") 

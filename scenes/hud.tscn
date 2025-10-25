@@ -59,10 +59,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Controls" type="Control" parent="Control"]
 layout_mode = 1
-anchor_left = 0.0225694
-anchor_top = 0.635802
-anchor_right = 0.333333
-anchor_bottom = 1.01389
+anchor_left = 0.0407986
+anchor_top = 0.563272
+anchor_right = 0.351562
+anchor_bottom = 0.94136
 script = ExtResource("2_5ysmq")
 metadata/_edit_use_anchors_ = true
 
@@ -73,11 +73,25 @@ anchor_left = 0.337989
 anchor_top = 0.130612
 anchor_right = 0.625502
 anchor_bottom = 0.535106
-offset_right = 54.9006
+offset_right = 54.9005
 offset_bottom = 38.1938
 scale = Vector2(0.652154, 0.721812)
 theme_override_font_sizes/font_size = 60
 text = "W"
+metadata/_edit_use_anchors_ = true
+
+[node name="click" type="Button" parent="Control/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.5
+anchor_top = 0.314286
+anchor_right = 2.78752
+anchor_bottom = 0.71878
+offset_right = 54.9005
+offset_bottom = 38.1938
+scale = Vector2(0.652154, 0.721812)
+theme_override_font_sizes/font_size = 60
+text = "O"
 metadata/_edit_use_anchors_ = true
 
 [node name="left" type="Button" parent="Control/Controls"]
@@ -101,7 +115,7 @@ anchor_left = 0.335851
 anchor_top = 0.557281
 anchor_right = 0.623364
 anchor_bottom = 0.961775
-offset_right = 54.9006
+offset_right = 54.9005
 offset_bottom = 38.1938
 scale = Vector2(0.652154, 0.721812)
 theme_override_font_sizes/font_size = 60
@@ -115,7 +129,7 @@ anchor_left = 0.639333
 anchor_top = 0.557281
 anchor_right = 0.926846
 anchor_bottom = 0.961775
-offset_right = 54.9006
+offset_right = 54.9007
 offset_bottom = 38.1938
 scale = Vector2(0.652154, 0.721812)
 theme_override_font_sizes/font_size = 60
@@ -125,6 +139,8 @@ metadata/_edit_use_anchors_ = true
 [connection signal="button_down" from="Control/Controls/up" to="Control/Controls" method="_on_up_button_down"]
 [connection signal="button_up" from="Control/Controls/up" to="Control/Controls" method="_on_up_button_up"]
 [connection signal="pressed" from="Control/Controls/up" to="Control/Controls" method="_on_up_pressed"]
+[connection signal="button_down" from="Control/Controls/click" to="Control/Controls" method="_on_click_button_down"]
+[connection signal="button_up" from="Control/Controls/click" to="Control/Controls" method="_on_click_button_up"]
 [connection signal="button_down" from="Control/Controls/left" to="Control/Controls" method="_on_left_button_down"]
 [connection signal="button_up" from="Control/Controls/left" to="Control/Controls" method="_on_left_button_up"]
 [connection signal="pressed" from="Control/Controls/left" to="Control/Controls" method="_on_left_pressed"]
